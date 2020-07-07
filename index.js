@@ -28,8 +28,8 @@ function logonUser({name, password, domain, type, provider}){
 
 module.exports.logonUser = logonUser;
 
-function impersonateLoggedOnUser({handle}){
-    return native.impersonateLoggedOnUser(handle);
+function impersonateLoggedOnUser(){
+    return native.impersonateLoggedOnUser();
 }
 
 module.exports.impersonateLoggedOnUser = impersonateLoggedOnUser;
