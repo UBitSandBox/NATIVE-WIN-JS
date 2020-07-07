@@ -1,6 +1,6 @@
-const native = require("bindings")("users.node");
+var native = require("bindings")("advapi32js.node");
 
-export const LogonType = {
+var LogonType = {
     INTERACTIVE: 2,
     NETWORK: 3,
     BATCH: 4,
@@ -10,7 +10,9 @@ export const LogonType = {
     NEW_CREDENTIALS: 9
 };
 
-export const LogonProvider = {
+module.exports.LogonType = LogonType;
+
+var LogonProvider = {
     DEFAULT:0,
     WINNT35:1,
     WINNT40:2,
@@ -18,14 +20,22 @@ export const LogonProvider = {
     VIRTUAL:4
 };
 
-export function logonUser({name, password, domain, type, provider}){
+module.exports.LogonProvider = LogonProvider;
+
+function logonUser({name, password, domain, type, provider}){
     return native.logonUser(name, domain, password, type, provider);
 }
 
-export function impersonateLoggedOnUser({handle}){
+module.exports.logonUser = logonUser;
+
+function impersonateLoggedOnUser({handle}){
     return native.impersonateLoggedOnUser(handle);
 }
 
-export function revertToSelf(){
+module.exports.impersonateLoggedOnUser = impersonateLoggedOnUser;
+
+function revertToSelf(){
     return native.revertToSelf();
 }
+
+module.exports.revertToSelf = revertToSelf;
