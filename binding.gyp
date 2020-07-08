@@ -1,6 +1,6 @@
 {
     "targets": [{
-        "target_name": "advapi32js",
+        "target_name": "addon",
         "cflags!": [ "-fno-exceptions" ],
         "cflags_cc!": [ "-fno-exceptions" ],
         "msvs_settings": {
