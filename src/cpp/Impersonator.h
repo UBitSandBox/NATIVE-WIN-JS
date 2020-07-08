@@ -31,7 +31,7 @@ class Impersonator : public Napi::ObjectWrap<Impersonator> {
     std::wstring name_;
     std::wstring password_;
 
-    HANDLE token_;
+    HANDLE* token_;
 };
 
 

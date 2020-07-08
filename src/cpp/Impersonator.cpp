@@ -83,14 +83,14 @@ void Impersonator::ImpersonateUser(const Napi::CallbackInfo &info) {
             this->password_.c_str(),
             type,
             provider,
-            &this->token_);
+            this->token_);
 
     if (!hr) {
         createWindowsError(env, GetLastError(), "LogonUserW").ThrowAsJavaScriptException();
         return;
     }
 
-    if (!ImpersonateLoggedOnUser(this->token_)) {
+    if (!ImpersonateLoggedOnUser(&this->token_)) {
         createWindowsError(env, GetLastError(), "ImpersonateLoggedOnUser").ThrowAsJavaScriptException();
     }
 }
@@ -116,11 +116,11 @@ void Impersonator::StopImpersonation(const Napi::CallbackInfo &info){
 void Impersonator::CloseUserToken(const Napi::CallbackInfo &info){
     Napi::Env env = info.Env();
 
-    if(this->token_ == NULL){
+    if(&this->token_ == NULL){
         return;
     }
 
-    if (!CloseHandle(this->token_)) {
+    if (!CloseHandle(&this->token_)) {
         createWindowsError(env, GetLastError(), "CloseHandle").ThrowAsJavaScriptException();
         return;
     }
