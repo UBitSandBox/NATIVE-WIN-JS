@@ -10,7 +10,9 @@
                 }
               },
         "sources": [
-            "src/cpp/advapi32js.cc"
+            "src/cpp/impersonator.cpp",
+            "src/cpp/helper.cpp",
+            "src/cpp/addon.cpp"
         ],
         'include_dirs': [
             "<!@(node -p \"require('node-addon-api').include\")"
