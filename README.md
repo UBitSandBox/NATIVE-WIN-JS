@@ -1,5 +1,7 @@
 # WIN-IMPERSONATOR-JS
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e14ad54a68b14e958d6f42e32fcad19b)](https://app.codacy.com/gh/UBitSandBox/WIN-IMPERSONATOR-JS?utm_source=github.com&utm_medium=referral&utm_content=UBitSandBox/WIN-IMPERSONATOR-JS&utm_campaign=Badge_Grade_Dashboard)
+
 ## Impersonator for Windows 
 
 Factory creating Impersonator Object with 2 public functions, "impersonateUser" and "stopImpersonation"
