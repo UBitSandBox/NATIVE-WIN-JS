@@ -1,0 +1,33 @@
+{
+  "name": "native-win-js-for-fun",
+  "version": "1.0.9",
+  "description": "Addon containing some native (COM) Functions",
+  "main": "src/js/addon.js",
+  "gypfile": "true",
+  "scripts": {
+    "install": "node-gyp rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UBitSandBox/WIN-IMPERSONATOR-JS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/UBitSandBox/WIN-IMPERSONATOR-JS/issues"
+  },
+  "homepage": "https://github.com/UBitSandBox/WIN-IMPERSONATOR-JS",
+  "os": [
+    "win32"
+  ],
+  "author": {
+    "name": "Guillaume Gnaegi",
+    "email": "guillaume.gnaegi@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "node-gyp": "^7.0.0"
+  },
+  "dependencies": {
+    "bindings": "^1.5.0",
+    "node-addon-api": "^3.0.0"
+  }
+}
