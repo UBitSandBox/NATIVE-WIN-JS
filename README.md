@@ -13,3 +13,24 @@ Calling COM Functions
 - ImpersonateLoggedOnUser (https://docs.microsoft.com/en-us/windows/win32/api/securitybaseapi/nf-securitybaseapi-impersonateloggedonuser)
 
 - RevertToSelf (https://docs.microsoft.com/en-us/windows/win32/api/securitybaseapi/nf-securitybaseapi-reverttoself)
+
+
+Reimplementing Code originally written by Simon Buchan https://github.com/simonbuchan/native-users-node (Thanks a lot!)
+
+### Usage
+
+```javascript
+import {createObject, LogonProvider, LogonType} from "native-win-js-for-fun";
+
+...
+let impersonator = createObject(userName, password, domain);
+
+//impersonating Windows Account, calling functions LogonUserW and also ImpersonateLoggedOnUser
+impersonator.impersonateUser(LogonType.NETWORK, LogonProvider.WINNT50);
+
+//stop Impersonation, calling functions RevertToSelf and then closing handle
+//This function must be called, otherwise handle will not be closed!!!
+impersonator.stopImpersonation();
+
+```
+
