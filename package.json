@@ -1,6 +1,6 @@
 {
   "name": "native-win-js-for-fun",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Addon containing some native (COM) Functions",
   "main": "src/js/addon.js",
   "gypfile": "true",
