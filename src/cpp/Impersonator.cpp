@@ -73,24 +73,24 @@ void Impersonator::ImpersonateUser(const Napi::CallbackInfo &info) {
     uint32_t type = info[0].As<Napi::Number>().Uint32Value();
     uint32_t provider = info[1].As<Napi::Number>().Uint32Value();
 
-    if(this->token_ != NULL){
+    if(token_ != NULL){
         Impersonator::CloseUserToken(info);
     }
 
     auto hr = LogonUserW(
-            this->name_.c_str(),
-            this->domain_.c_str(),
-            this->password_.c_str(),
+            name_.c_str(),
+            domain_.c_str(),
+            password_.c_str(),
             type,
             provider,
-            this->token_);
+            &token_);
 
     if (!hr) {
         createWindowsError(env, GetLastError(), "LogonUserW").ThrowAsJavaScriptException();
         return;
     }
 
-    if (!ImpersonateLoggedOnUser(&this->token_)) {
+    if (!ImpersonateLoggedOnUser(token_)) {
         createWindowsError(env, GetLastError(), "ImpersonateLoggedOnUser").ThrowAsJavaScriptException();
     }
 }
@@ -116,12 +116,14 @@ void Impersonator::StopImpersonation(const Napi::CallbackInfo &info){
 void Impersonator::CloseUserToken(const Napi::CallbackInfo &info){
     Napi::Env env = info.Env();
 
-    if(&this->token_ == NULL){
+    if(token_ == NULL){
         return;
     }
 
-    if (!CloseHandle(&this->token_)) {
+    if (!CloseHandle(token_)) {
         createWindowsError(env, GetLastError(), "CloseHandle").ThrowAsJavaScriptException();
         return;
     }
+
+    token_ = NULL;
 }
