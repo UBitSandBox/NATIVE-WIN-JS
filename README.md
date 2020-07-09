@@ -4,7 +4,7 @@
 
 ## Impersonator for Windows 
 
-Factory creating Impersonator Object with 2 public functions, "impersonateUser" and "stopImpersonation"
+Impersonator Object Factory with 2 public functions, "impersonateUser" and "stopImpersonation"
 
 Calling COM Functions 
 
